@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import firebase from './firebase.js';
+import firebase, { auth, provider }  from './firebase.js';
 
 class App extends Component {
   constructor() {
@@ -9,10 +9,13 @@ class App extends Component {
     this.state = {
       currentItem: '',
       username: '',
-      items: []
+      items: [],
+      user: null
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
   }
   handleChange(e) {
     this.setState({
@@ -50,17 +53,38 @@ class App extends Component {
       });
     });
   }
+
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
   }
+
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  }
+
+  logout() {
+    // we will add the code for this in a moment, but need to add the method now or the bind will throw an error
+  }
+
   render() {
     return (
       <div className='app'>
         <header>
             <div className="wrapper">
               <h1>Fun Food Friends</h1>
-              <i className="fa fa-shopping-basket" aria-hidden="true"></i>               
+              <i className="fa fa-shopping-basket" aria-hidden="true"></i>            
+              {this.state.user ?
+                <button onClick={this.logout}>Log Out</button>                
+                :
+                <button onClick={this.login}>Log In</button>              
+              }   
             </div>
         </header>
         <div className='container'>
