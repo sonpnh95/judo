@@ -1,10 +1,8 @@
 {
-  "name": "fun-food-friends-no-auth",
+  "name": "judo-admin",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "@coreui/chartjs": "^2.0.0",
     "@coreui/coreui": "^3.2.2",
     "@coreui/icons": "2.0.0-beta.4",
@@ -17,8 +15,11 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "node-sass": "^4.14.1",
+    "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
+    "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
+    "react-dom": "^16.13.1",
     "react-redux": "7.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "4.0.5"
@@ -34,7 +35,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0"
   },
   "eslintConfig": {
     "extends": "react-app"

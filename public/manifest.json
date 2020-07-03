@@ -1,9 +1,9 @@
 {
-    "short_name": "React-Admin",
-    "name": "React-Admin",
+    "short_name": "Judo-React-Admin",
+    "name": "Judo-React-Admin",
     "icons": [
         {
-            "src": "./assets/img/favicon.png",
+            "src": "./assets/img/judo.png",
             "sizes": "100x100",
             "type": "image/png"
         }
