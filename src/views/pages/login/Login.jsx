@@ -34,10 +34,13 @@ class Login extends React.Component {
     }
   }
 
-  handleChange = (stateValue, stateName) => {
-    let user = this.state.user
-    user[stateName] =stateName
+  handleChange = (e, stateName) => {
+    let stateValue = e.target.value !== undefined ? e.target.value : "";
+    let {user} = this.state
+    user[stateName] = stateValue
     this.setState({user})
+    console.log(e.target.value)
+
   }
 
   loginPage = () => {
@@ -45,7 +48,8 @@ class Login extends React.Component {
   }
 
   render() {
-    let user = this.state.user
+    const {user} = this.state
+    console.log(user)
 
     return (
       <div className="c-app c-default-layout flex-row align-items-center login-background" >
@@ -66,10 +70,11 @@ class Login extends React.Component {
                         </CInputGroupPrepend>
                         <CInput 
                           type="text" 
-                          placeholder="Username" 
-                          autoComplete="username" 
-                          value={user.username || ""}
-                          onChange={(e) => this.handleChange(e.target.value, "username")} />
+                          // placeholder="Username" 
+                          // autoComplete="username" 
+                          value={user.username}
+                          onChange={(event) => this.handleChange(event, "username")}
+                        />
                       </CInputGroup>
                       <CInputGroup className="mb-4">
                         <CInputGroupPrepend>
@@ -80,9 +85,9 @@ class Login extends React.Component {
                         <CInput 
                           type="password" 
                           placeholder="Password" 
-                          autoComplete="current-password" 
-                          value={user.password || ""}
-                          onChange={(e) => this.handleChange(e.target.value, "password")}/>
+                          // autoComplete="current-password" 
+                          value={user.password}
+                          onChange={(e) => this.handleChange(e, "password")}/>
                       </CInputGroup>
                       <CRow>
                         <CCol xs="6">
